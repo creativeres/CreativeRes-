@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+  <p>Thank you for checking in!</p>
+  <p><a href="{{ url_for('survey') }}">Submit another</a></p>
+  <p><a href="{{ url_for('dashboard') }}">View dashboard</a></p>
+{% endblock %}

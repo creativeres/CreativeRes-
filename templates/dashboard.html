@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Counselor Dashboard</h2>
+  <table>
+    <tr><th>Time (UTC)</th><th>Client</th><th>Rating</th><th>Note</th></tr>
+    {% for c in checkins %}
+      <tr class="{% if c['flagged'] %}flagged{% endif %}">
+        <td>{{ c['timestamp'] }}</td>
+        <td>{{ c['client'] }}</td>
+        <td>{{ c['rating'] }}</td>
+        <td>{{ c['note'] }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% if not checkins %}
+    <p>No check-ins yet.</p>
+  {% endif %}
+{% endblock %}

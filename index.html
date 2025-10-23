@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holiday Helper Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <h1>Holiday Helper Hub</h1>
+        <p>
+          Personalized coping skills, grounding exercises, and quick inspiration to
+          help you navigate every major holiday with intention and care.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2 class="panel__title">Choose your holiday focus</h2>
+        <div class="control">
+          <label class="control__label" for="holidaySelect">Holiday</label>
+          <select id="holidaySelect" class="control__input"></select>
+        </div>
+
+        <div class="control">
+          <span class="control__label">How are you feeling?</span>
+          <div class="chip-group" id="moodChips" role="group"></div>
+        </div>
+
+        <div class="control">
+          <label class="control__label" for="energyRange">Energy level</label>
+          <input
+            type="range"
+            id="energyRange"
+            min="0"
+            max="100"
+            value="50"
+            aria-describedby="energyValue"
+          />
+          <div id="energyValue" class="control__hint">Balanced</div>
+        </div>
+
+        <button id="randomTip" class="button button--primary" type="button">
+          Surprise me with a grounding idea
+        </button>
+      </section>
+
+      <section class="panel panel--wide">
+        <div class="panel__header">
+          <h2 class="panel__title">Your tailored support kit</h2>
+          <div class="tag" id="currentHolidayTag">&nbsp;</div>
+        </div>
+        <div class="cards" id="suggestionCards"></div>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel__title">Micro-actions</h2>
+        <ul class="list" id="microActions"></ul>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel__title">Reflection corner</h2>
+        <p class="panel__hint">
+          Jot down what you need, a boundary to set, or a joyful moment you want to
+          protect. Notes stay on this device.
+        </p>
+        <textarea id="reflectionNotes" rows="6" aria-label="Reflection notes"></textarea>
+        <div class="button-row">
+          <button class="button" id="saveNotes" type="button">Save note</button>
+          <button class="button button--ghost" id="clearNotes" type="button">
+            Clear
+          </button>
+        </div>
+      </section>
+
+      <section class="panel panel--wide">
+        <h2 class="panel__title">Need extra support?</h2>
+        <div class="resources">
+          <p>
+            Reach out to trusted friends, community groups, or professional help. In the
+            United States you can dial <strong>988</strong> for the Suicide & Crisis
+            Lifeline. If you are outside the U.S., please contact your local emergency or
+            crisis line.
+          </p>
+          <p>
+            This hub is a companion, not a replacement for professional care.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made with calm intentions for every season.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -678,6 +678,39 @@ const notesField = document.getElementById('reflectionNotes');
 const saveNotesButton = document.getElementById('saveNotes');
 const clearNotesButton = document.getElementById('clearNotes');
 
+function getStorageKey(holiday) {
+  return `holiday-helper-notes-${holiday}`;
+}
+
+function safeStorageAction(action, key, value) {
+  try {
+    if (!('localStorage' in window) || !window.localStorage) {
+      return null;
+    }
+    if (value === undefined) {
+      return window.localStorage[action](key);
+    }
+    return window.localStorage[action](key, value);
+  } catch (error) {
+    console.warn(`Holiday Helper Hub storage ${action} failed`, error);
+    return null;
+  }
+}
+
+function safeGetItem(key) {
+  const result = safeStorageAction('getItem', key);
+  return typeof result === 'string' ? result : null;
+}
+
+function safeSetItem(key, value) {
+  const result = safeStorageAction('setItem', key, value);
+  return result !== null;
+}
+
+function safeRemoveItem(key) {
+  safeStorageAction('removeItem', key);
+}
+
 let selectedMood = null;
 
 function populateHolidaySelect() {
@@ -828,23 +861,23 @@ function showRandomTip() {
 function saveNotes() {
   const holiday = holidaySelect.value;
   const content = notesField.value.trim();
-  const key = `holiday-helper-notes-${holiday}`;
-  localStorage.setItem(key, content);
-  saveNotesButton.textContent = 'Saved!';
+  const key = getStorageKey(holiday);
+  const wasSaved = safeSetItem(key, content);
+  saveNotesButton.textContent = wasSaved ? 'Saved!' : 'Unable to save';
   setTimeout(() => (saveNotesButton.textContent = 'Save note'), 2000);
 }
 
 function clearNotes() {
   const holiday = holidaySelect.value;
-  const key = `holiday-helper-notes-${holiday}`;
-  localStorage.removeItem(key);
+  const key = getStorageKey(holiday);
+  safeRemoveItem(key);
   notesField.value = '';
 }
 
 function loadNotes() {
   const holiday = holidaySelect.value;
-  const key = `holiday-helper-notes-${holiday}`;
-  const stored = localStorage.getItem(key);
+  const key = getStorageKey(holiday);
+  const stored = safeGetItem(key);
   notesField.value = stored || '';
 }
 

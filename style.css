@@ -1,0 +1,152 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f5ff;
+  --panel: #ffffff;
+  --accent: #5b4bff;
+  --accent-soft: #dedbff;
+  --good: #1f8a4c;
+  --bad: #a33a2f;
+  --ink: #182032;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #ffffff, var(--bg));
+  color: var(--ink);
+}
+
+.game-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.top-bar,
+.mission-panel,
+.room-panel,
+.log-panel,
+.controls {
+  background: var(--panel);
+  border-radius: 14px;
+  border: 2px solid #d4dbff;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgb(36 48 122 / 12%);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0.35rem 0;
+}
+
+.subtitle,
+.tip {
+  color: #3a4670;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, auto));
+  gap: 0.2rem 0.8rem;
+  align-items: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.bins {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+}
+
+.drop-zone {
+  min-height: 160px;
+  border: 2px dashed #9aa8f8;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background: #f9f9ff;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.45rem;
+}
+
+.item {
+  border: 1px solid #8d95c7;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.92rem;
+  padding: 0.35rem 0.55rem;
+}
+
+.item:hover {
+  background: var(--accent-soft);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+button {
+  border-radius: 10px;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.log-panel ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1rem;
+}
+
+.log-panel li.good {
+  color: var(--good);
+}
+
+.log-panel li.bad {
+  color: var(--bad);
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bins {
+    grid-template-columns: 1fr;
+  }
+}
